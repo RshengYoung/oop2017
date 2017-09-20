@@ -125,13 +125,11 @@ TEST(Sort, sortByIncreasingCompactness)
 
     Rectangle rec(1, 2, 5, 2);
     Circle cir1(1, 2, 2);
-    Circle cir2(2, 2, 15);
     Triangle tri(v1, v2, v3);
 
     list<Shape *> Shapes;
     Shapes.push_back(&rec);
     Shapes.push_back(&cir1);
-    Shapes.push_back(&cir2);
     Shapes.push_back(&tri);
 
     Sort sort;
@@ -143,8 +141,6 @@ TEST(Sort, sortByIncreasingCompactness)
     ASSERT_EQ(&rec, *left);
     left++;
     ASSERT_EQ(&cir1, *left);
-    left++;
-    ASSERT_EQ(&cir2, *left);
 }
 
 #endif
