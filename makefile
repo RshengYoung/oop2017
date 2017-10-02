@@ -21,7 +21,7 @@ variable.o: variable.cpp variable.h
 
 clean:
 ifeq (${OS}, Windows_NT)
-	del *.o *exe
+	del *.o *.exe
 else
 	rm -f *.o hw2
 endif
