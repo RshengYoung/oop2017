@@ -8,16 +8,13 @@ else
 endif
 
 mainTerm.o: mainTerm.cpp utTerm.h
-	g++ --std=c++11 -c mainTerm.cpp
-
-number.o: number.cpp number.h
-	g++ --std=c++11 -c number.cpp
-
-atom.o: atom.cpp atom.h
-	g++ --std=c++11 -c atom.cpp
-
-variable.o: variable.cpp variable.h
-	g++ --std=c++11 -c variable.cpp
+	g++ -std=gnu++0x -c mainTerm.cpp
+number.o: number.h number.cpp
+	g++ -std=gnu++0x -c number.cpp
+atom.o: atom.h atom.cpp
+	g++ -std=gnu++0x -c atom.cpp
+variable.o: variable.h variable.cpp
+	g++ -std=gnu++0x -c variable.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
