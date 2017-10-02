@@ -1,55 +1,28 @@
 #ifndef NUMBER_H
 #define NUMBER_H
-
 #include <string>
-#include "atom.h"
-#include "variable.h"
-
 using std::string;
+
+class Atom;
+class Variable;
 
 class Number
 {
 
 public:
-  Number(string s) : _symbol(s){};
-  Number(int v) : _value(v){};
+  Number(string, string);
+  string value();
+  string symbol();
 
-  int value() { return _value; }
-  string symbol() { return _symbol; }
-
-  bool match(Number num)
-  {
-    if (_value == num.value())
-      return true;
-    else
-      return false;
-  }
-
-  bool match(Atom atom)
-  {
-    return false;
-  }
-
-  bool match(Variable var)
-  {
-    if (_symbol == var._symbol)
-      return true;
-    else
-    {
-      bool ret = _assignable;
-      if (_assignable)
-      {
-        _symbol = var._symbol;
-        _assignable = false;
-      }
-      return ret;
-    }
-  }
+  bool match(Number num);
+  bool match(Atom atom);
+  bool match(Variable &var);
 
 private:
-  int _value;
-  string _symbol;
-  bool _assignable = true;
+  string const _symbol;
+  string const _value;
+
+
 };
 
 #endif
