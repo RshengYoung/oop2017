@@ -6,7 +6,7 @@
 using std::string;
 
 Number::Number(string symbol, string value) : _symbol(symbol), _value(value) {}
-Number::Number(int value) : _value(std::to_string(value)) {}
+Number::Number(int value) : _symbol(std::to_string(value)), _value(std::to_string(value)) {}
 
 string Number::value() { return _value; }
 string Number::symbol() { return _symbol; }
