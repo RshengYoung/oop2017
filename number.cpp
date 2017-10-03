@@ -2,7 +2,11 @@
 #include "variable.h"
 #include "atom.h"
 
+#include <string>
+using std::string;
+
 Number::Number(string symbol, string value) : _symbol(symbol), _value(value) {}
+Number::Number(int value) : _value(std::to_string(value)) {}
 
 string Number::value() { return _value; }
 string Number::symbol() { return _symbol; }

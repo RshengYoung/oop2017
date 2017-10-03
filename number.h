@@ -11,6 +11,7 @@ class Number
 
 public:
   Number(string, string);
+  Number(int value);
   string value();
   string symbol();
 
