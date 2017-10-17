@@ -34,7 +34,7 @@ TEST(Variable, haveValue) {
 TEST(Variable, numE_to_varX) {
     Variable X("X");
     Number num(2.7182);
-    X.match(num);
+    ASSERT_TRUE(X.match(num));
     ASSERT_EQ("2.7182", X.value());
 }
 
@@ -47,6 +47,7 @@ TEST(Variable, varY_to_varX_and_num1_to_varX) {
 
     X.match(Y);
     X.match(num);
+    ASSERT_EQ("1", X.value());
     ASSERT_EQ("1", Y.value());
 }
 
@@ -60,6 +61,7 @@ TEST(Variable, varY_to_varX_and_num1_to_varY) {
     X.match(Y);
     Y.match(num);
     ASSERT_EQ("1", X.value());
+    ASSERT_EQ("1", Y.value());
 }
 
 // ?- X=X, X=1.
@@ -141,19 +143,18 @@ TEST(Variable, Struct1) {
 // Then #symbol() of Y should return "Y"
 // And #value() of Y should return "s(teddy)"
 TEST(Variable, Struct2) {
-    // Variable X("X"), Y("Y");
-    // vector<Term *> v = { &X };
-    // Struct s(Atom("s"), v);
-    // Atom teddy("teddy");
+    Variable X("X"), Y("Y");
+    vector<Term *> v = { &X };
+    Struct s(Atom("s"), v);
+    Atom teddy("teddy");
 
-    // ASSERT_TRUE(Y.match(s));
-    // std::cout<<Y.value()<<std::endl;
+    ASSERT_TRUE(Y.match(s));
+    ASSERT_TRUE(X.match(teddy));
 
-    // ASSERT_TRUE(X.match(teddy));
-    // std::cout<<Y.value()<<std::endl;
+    std::cout<<"X: "<< X.value()<<std::endl;
 
-    // ASSERT_EQ("Y", Y.symbol());
-    // ASSERT_EQ("s(teddy)", Y.value());
+    ASSERT_EQ("Y", Y.symbol());
+    ASSERT_EQ("s(teddy)", Y.value());
 }
 
 #endif
