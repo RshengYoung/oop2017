@@ -24,11 +24,11 @@ bool Variable::match(Term &term) {
             else
                 _value = var->_value;
         } else {
-            Atom *atom = dynamic_cast<Atom *>(&term);
-            if (atom) {
-                _value = &(atom->_symbol);
-            } else 
-                *_value = term.symbol();
+            // Atom *atom = dynamic_cast<Atom *>(&term);
+            // if (atom) {
+            //     _value = &(atom->_symbol);
+            // } else 
+            *_value = term.symbol();
             _assignable = false;
         }        
     } else {
