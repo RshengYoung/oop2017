@@ -32,7 +32,7 @@ else
 	rm -f *.o $(PROJECT)
 endif
 
-test:
-	make clean
-	make
-	./$(PROJECT)
+# test:
+# 	make clean
+# 	make
+# 	./$(PROJECT)
