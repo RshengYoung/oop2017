@@ -13,8 +13,6 @@ endif
 
 main.o: main.cpp utVariable.h
 	g++ -std=gnu++0x -c main.cpp
-# mainStruct.o: mainStruct.cpp utVariable.h utStruct.h
-# 	g++ -std=gnu++0x -c mainStruct.cpp
 
 term.o: $(INC_DIR)/term.h $(SRC_DIR)/term.cpp
 	g++ -std=gnu++0x -c $(SRC_DIR)/term.cpp
