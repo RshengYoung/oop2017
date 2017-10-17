@@ -18,19 +18,17 @@ bool Variable::match(Term &term) {
     bool ret = _assignable;
     if (_assignable) {
         Variable *var = dynamic_cast<Variable *>(&term);
-        // Atom *atom = dynamic_cast<Atom *>(&term);
         if (var) {
             if (var->_assignable)
                 var->_value = _value;
             else
                 _value = var->_value;
-        // } else if (atom) {
-        //     _value = &(atom->_symbol);
-        //     _assignable = false;
         } else {
             *_value = term.symbol();
             _assignable = false;
         }        
+    } else {
+        return *_value == term.value();
     }
     return ret;
 }

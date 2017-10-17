@@ -13,14 +13,11 @@ class Variable : public Term {
     string symbol() const;
     string value() const;
     bool match(Term &term);
-    // bool match(Variable &var);
 
     string *_value = new string;
     bool _assignable = true;
 
     string const _symbol;
-    //   private:
-    //     bool _assignable = true;
 };
 
 #endif
