@@ -1,5 +1,5 @@
 #include <string>
-#include "../include/atom.h"
+#include "atom.h"
 
 using std::string;
 

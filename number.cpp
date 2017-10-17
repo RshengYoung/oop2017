@@ -1,5 +1,5 @@
 #include <string>
-#include "../include/number.h"
+#include "number.h"
 
 using std::string;
 

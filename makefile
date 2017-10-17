@@ -1,5 +1,3 @@
-INC_DIR = include
-SRC_DIR = src
 PROJECT = hw3
 
 all: $(PROJECT)
@@ -14,16 +12,16 @@ endif
 main.o: main.cpp utVariable.h
 	g++ -std=gnu++0x -c main.cpp
 
-term.o: $(INC_DIR)/term.h $(SRC_DIR)/term.cpp
-	g++ -std=gnu++0x -c $(SRC_DIR)/term.cpp
-atom.o: $(INC_DIR)/atom.h $(SRC_DIR)/atom.cpp
-	g++ -std=gnu++0x -c $(SRC_DIR)/atom.cpp
-variable.o: $(INC_DIR)/variable.h $(SRC_DIR)/variable.cpp
-	g++ -std=gnu++0x -c $(SRC_DIR)/variable.cpp
-number.o: $(INC_DIR)/number.h $(SRC_DIR)/number.cpp
-	g++ -std=gnu++0x -c $(SRC_DIR)/number.cpp
-struct.o: $(INC_DIR)/struct.h $(SRC_DIR)/struct.cpp
-	g++ -std=gnu++0x -c $(SRC_DIR)/struct.cpp
+term.o: term.h term.cpp
+	g++ -std=gnu++0x -c term.cpp
+atom.o: atom.h atom.cpp
+	g++ -std=gnu++0x -c atom.cpp
+variable.o: variable.h variable.cpp
+	g++ -std=gnu++0x -c variable.cpp
+number.o: number.h number.cpp
+	g++ -std=gnu++0x -c number.cpp
+struct.o: struct.h struct.cpp
+	g++ -std=gnu++0x -c struct.cpp
 
 clean:
 ifeq (${OS}, Windows_NT)
@@ -32,3 +30,7 @@ else
 	rm -f *.o $(PROJECT)
 endif
 
+test:
+	make clean
+	make
+	./$(PROJECT)

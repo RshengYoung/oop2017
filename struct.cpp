@@ -1,6 +1,5 @@
-#include "../include/term.h"
-#include "../include/struct.h"
-// #include "../include/atom.h"
+#include "term.h"
+#include "struct.h"
 #include <vector>
 #include <string>
 

@@ -2,10 +2,10 @@
 #define UTSTRUCT_H
 
 #include <vector>
-#include "include/atom.h"
-#include "include/struct.h"
-#include "include/number.h"
-#include "include/variable.h"
+#include "atom.h"
+#include "struct.h"
+#include "number.h"
+#include "variable.h"
 
 using std::vector;
 

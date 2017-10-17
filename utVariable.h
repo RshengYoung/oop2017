@@ -2,10 +2,10 @@
 #define UTVARIABLE_H
 
 #include <vector>
-#include "include/variable.h"
-#include "include/struct.h"
-#include "include/atom.h"
-#include "include/number.h"
+#include "variable.h"
+#include "struct.h"
+#include "atom.h"
+#include "number.h"
 
 using std::vector;
 
