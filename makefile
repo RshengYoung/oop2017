@@ -11,7 +11,6 @@ endif
 
 main.o: main.cpp utVariable.h
 	g++ -std=gnu++0x -c main.cpp
-
 term.o: term.h term.cpp
 	g++ -std=gnu++0x -c term.cpp
 atom.o: atom.h atom.cpp
