@@ -1,17 +1,11 @@
-#include <string>
 #include "atom.h"
+#include "variable.h"
+#include <typeinfo>
 
-
-using std::string;
-
-Atom::Atom(string s) : _symbol(s) {}
-string Atom::symbol() const { return _symbol; }
-string Atom::value() const { return _symbol; }
-
-bool Atom::match(Variable &var) {
-    return var.match(*this);
-}
-
-bool Atom::match(Term& term){
-    return this->symbol() == term.symbol();
+bool Term::match(Term &a)
+{
+    if (typeid(a) == typeid(Variable))
+        return a.match(*this);
+    else
+        return symbol() == a.symbol();
 }
