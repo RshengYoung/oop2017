@@ -62,7 +62,7 @@ class List : public Term
     List *tail() const
     {
         if (_elements.empty())
-            throw string("Accessing head in an empty list");
+            throw string("Accessing tail in an empty list");
         vector<Term *> vector;
         vector.assign(++_elements.begin(), _elements.end());
         List *ptr = new List(vector);

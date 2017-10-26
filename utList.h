@@ -286,7 +286,7 @@ TEST(List, emptyExecptionOfTail)
     }
     catch (string error)
     {
-        ASSERT_EQ(string("Accessing head in an empty list"), error);
+        ASSERT_EQ(string("Accessing tail in an empty list"), error);
     }
 }
 
