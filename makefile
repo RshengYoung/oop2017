@@ -2,9 +2,7 @@ PROJECT	= hw4
 
 all: $(PROJECT)
 
-
 $(PROJECT): main.o atom.o
-
 ifeq (${OS}, Windows_NT)
 	g++ -o $(PROJECT) main.o atom.o -lgtest
 else
