@@ -4,6 +4,7 @@
 using std::string;
 
 #include "atom.h"
+#include "number.h"
 #include "variable.h"
 #include "global.h"
 #include "scanner.h"
@@ -15,7 +16,6 @@ class Parser
     Parser(Scanner scanner) : _scanner(scanner) {}
     Term *createTerm()
     {
-        // int token = _scanner.nextToken();
         _currentToken = _scanner.nextToken();
         _scanner.skipLeadingWhiteSpace();
         if (_currentToken == VAR)

@@ -1,4 +1,4 @@
-#include "atom.h"
+#include "term.h"
 #include "variable.h"
 #include <typeinfo>
 

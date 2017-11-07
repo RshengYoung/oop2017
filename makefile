@@ -2,19 +2,19 @@ PROJECT	= hw5
 
 all: $(PROJECT)
 
-$(PROJECT): main.o atom.o
+$(PROJECT): main.o term.o
 ifeq (${OS}, Windows_NT)
-	g++ -o $(PROJECT) main.o atom.o -lgtest
+	g++ -o $(PROJECT) main.o term.o -lgtest
 else
-	g++ -o $(PROJECT) main.o atom.o -lgtest -lpthread
+	g++ -o $(PROJECT) main.o term.o -lgtest -lpthread
 endif
 
 
-main.o: main.cpp utParser.h variable.h struct.h list.h parser.h scanner.h
+main.o: main.cpp utParser.h atom.h number.h variable.h struct.h list.h parser.h scanner.h
 	g++ -std=gnu++0x -c main.cpp
 
-atom.o: atom.h atom.cpp
-	g++ -std=gnu++0x -c atom.cpp
+term.o: term.h term.cpp
+	g++ -std=gnu++0x -c term.cpp
 	
 
 clean:
