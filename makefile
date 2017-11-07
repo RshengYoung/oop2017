@@ -1,4 +1,4 @@
-PROJECT	= hw4
+PROJECT	= hw5
 
 all: $(PROJECT)
 
@@ -10,7 +10,7 @@ else
 endif
 
 
-main.o: main.cpp utList.h variable.h struct.h list.h
+main.o: main.cpp utParser.h variable.h struct.h list.h parser.h scanner.h
 	g++ -std=gnu++0x -c main.cpp
 
 atom.o: atom.h atom.cpp
