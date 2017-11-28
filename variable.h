@@ -22,12 +22,12 @@ class Variable : public Term
 
     bool match(Term &term)
     {
-        if (typeid(term) == typeid(List))
-        {
-            List *p = dynamic_cast<List *>(&term);
-            if (p->inList(*this))
-                return false;
-        }
+        // if (typeid(term) == typeid(List))
+        // {
+        //     List *p = dynamic_cast<List *>(&term);
+        //     if (p->inList(*this))
+        //         return false;
+        // }
 
         if (this == &term)
             return true;
