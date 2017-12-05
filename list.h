@@ -87,7 +87,7 @@ class List : public Term
     int size() const { return _elements.size(); }
 
     Term *args(int index) { return _elements[index]; }
-    int arity() const { return _elements.size(); }
+    int arity() { return _elements.size(); }
 
     Iterator<Term> *createIterator();
     Iterator<Term> *createBFSIterator();

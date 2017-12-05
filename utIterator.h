@@ -9,47 +9,47 @@
 #include "list.h"
 #include "iterator.h"
 
-// //  s(1, t(X, 2), Y)
-// TEST(iterator, first)
-// {
-//     Number one(1), two(2);
-//     Variable X("X"), Y("Y");
-//     Struct t(Atom("t"), {&X, &two});
-//     Struct s(Atom("s"), {&one, &t, &Y});
+//  s(1, t(X, 2), Y)
+TEST(iterator, first)
+{
+    Number one(1), two(2);
+    Variable X("X"), Y("Y");
+    Struct t(Atom("t"), {&X, &two});
+    Struct s(Atom("s"), {&one, &t, &Y});
 
-//     Iterator<Term> *it = s.createIterator();
-//     it->first();
-//     ASSERT_EQ("1", it->currentItem()->symbol());
-//     ASSERT_FALSE(it->isDone());
-//     it->next();
-//     ASSERT_EQ("t(X, 2)", it->currentItem()->symbol());
-//     ASSERT_FALSE(it->isDone());
-//     it->next();
-//     ASSERT_EQ("Y", it->currentItem()->symbol());
-//     it->next();
-//     ASSERT_TRUE(it->isDone());
-// }
+    Iterator<Term> *it = s.createIterator();
+    it->first();
+    ASSERT_EQ("1", it->currentItem()->symbol());
+    ASSERT_FALSE(it->isDone());
+    it->next();
+    ASSERT_EQ("t(X, 2)", it->currentItem()->symbol());
+    ASSERT_FALSE(it->isDone());
+    it->next();
+    ASSERT_EQ("Y", it->currentItem()->symbol());
+    it->next();
+    ASSERT_TRUE(it->isDone());
+}
 
-// //  [1, t(X, 2), Y]
-// TEST(iterator, firstList)
-// {
-//     Number one(1), two(2);
-//     Variable X("X"), Y("Y");
-//     Struct t(Atom("t"), {&X, &two});
-//     List l({&one, &t, &Y});
+//  [1, t(X, 2), Y]
+TEST(iterator, firstList)
+{
+    Number one(1), two(2);
+    Variable X("X"), Y("Y");
+    Struct t(Atom("t"), {&X, &two});
+    List l({&one, &t, &Y});
 
-//     Iterator<Term> *it = l.createIterator();
-//     it->first();
-//     ASSERT_EQ("1", it->currentItem()->symbol());
-//     ASSERT_FALSE(it->isDone());
-//     it->next();
-//     ASSERT_EQ("t(X, 2)", it->currentItem()->symbol());
-//     ASSERT_FALSE(it->isDone());
-//     it->next();
-//     ASSERT_EQ("Y", it->currentItem()->symbol());
-//     it->next();
-//     ASSERT_TRUE(it->isDone());
-// }
+    Iterator<Term> *it = l.createIterator();
+    it->first();
+    ASSERT_EQ("1", it->currentItem()->symbol());
+    ASSERT_FALSE(it->isDone());
+    it->next();
+    ASSERT_EQ("t(X, 2)", it->currentItem()->symbol());
+    ASSERT_FALSE(it->isDone());
+    it->next();
+    ASSERT_EQ("Y", it->currentItem()->symbol());
+    it->next();
+    ASSERT_TRUE(it->isDone());
+}
 
 //  s(1, t(X, 2), Y)
 TEST(iterator, structBFS)

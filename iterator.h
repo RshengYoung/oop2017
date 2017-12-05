@@ -6,7 +6,6 @@
 #include "list.h"
 
 #include <queue>
-#include <iostream>
 
 using std::queue;
 
@@ -78,13 +77,13 @@ class BFSIterator : public Iterator<T>
     void next() { _index++; }
 
   private:
-    BFSIterator(T *term) : _index(0), _term(term) { BFS(_term); }
+    BFSIterator(T *term) : _index(0), _term(term) { BFS(); }
 
     int _index;
     T *_term;
     std::vector<T *> _terms;
 
-    void BFS(T *term)
+    void BFS()
     {
         queue<T *> q;
         q.push(_term);
@@ -93,21 +92,8 @@ class BFSIterator : public Iterator<T>
             T *n = q.front();
             q.pop();
             _terms.push_back(n);
-            Struct *ps = dynamic_cast<Struct *>(n);
-            List *pl = dynamic_cast<List *>(n);
-            if (ps)
-            {
-                for (int i = 0; i < ps->arity(); i++)
-                    q.push(ps->args(i));
-            }
-            else if (pl)
-            {
-                for (int i = 0; i < pl->arity(); i++)
-                    q.push(pl->args(i));
-            }
-
-            // for (int i = 0; i < n->arity(); i++)
-            //     q.push(n->args(i));
+            for (int i = 0; i < n->arity(); i++)
+                q.push(n->args(i));
         }
     }
 };
@@ -134,18 +120,8 @@ class DFSIterator : public Iterator<T>
     void DFS(T *term)
     {
         _terms.push_back(term);
-        Struct *ps = dynamic_cast<Struct *>(term);
-        List *pl = dynamic_cast<List *>(term);
-        if (ps)
-        {
-            for (int i = 0; i < ps->arity(); i++)
-                DFS(ps->args(i));
-        }
-        else if (pl)
-        {
-            for (int i = 0; i < pl->arity(); i++)
-                DFS(pl->args(i));
-        }
+        for (int i = 0; i < term->arity(); i++)
+            DFS(term->args(i));
     }
 };
 

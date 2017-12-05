@@ -12,8 +12,8 @@ class Term
     virtual string value() const { return symbol(); }
     virtual bool match(Term &a);
 
-    // int arity();
-    // Term *args(int);
+    virtual int arity() { return 0; }
+    virtual Term *args(int index) { return nullptr; }
 
   protected:
     Term() : _symbol("") {}
