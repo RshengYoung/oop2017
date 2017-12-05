@@ -73,7 +73,7 @@ class BFSIterator : public Iterator<T>
     void first() { _index = 1; }
 
     T *currentItem() const { return _terms[_index]; }
-    bool isDone() const { return _index >= _terms.size() - 1; }
+    bool isDone() const { return _index >= _terms.size(); }
     void next() { _index++; }
 
   private:
@@ -107,7 +107,7 @@ class DFSIterator : public Iterator<T>
     void first() { _index = 1; }
 
     T *currentItem() const { return _terms[_index]; }
-    bool isDone() const { return _index >= _terms.size() - 1; }
+    bool isDone() const { return _index >= _terms.size(); }
     void next() { _index++; }
 
   private:
