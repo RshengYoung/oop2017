@@ -4,8 +4,11 @@
 #include "atom.h"
 #include <vector>
 
-using std::vector;
 using std::string;
+using std::vector;
+
+template <class T>
+class Iterator;
 
 class List : public Term
 {
@@ -82,6 +85,13 @@ class List : public Term
 
     bool isEmpty() const { return _elements.empty(); }
     int size() const { return _elements.size(); }
+
+    Term *args(int index) { return _elements[index]; }
+    int arity() const { return _elements.size(); }
+
+    Iterator<Term> *createIterator();
+    Iterator<Term> *createBFSIterator();
+    Iterator<Term> *createDFSIterator();
 
   private:
     vector<Term *> _elements;

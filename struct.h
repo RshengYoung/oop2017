@@ -2,21 +2,27 @@
 #define STRUCT_H
 
 #include "atom.h"
+
 #include <vector>
 #include <string>
 
 using std::string;
 
+template <class T>
+class Iterator;
+
 class Struct : public Term
 {
   public:
     Struct(Atom name, std::vector<Term *> args) : _name(name) { _args = args; }
+    Atom &name() { return _name; }
 
     Term *args(int index) { return _args[index]; }
-
     int arity() { return _args.size(); }
 
-    Atom &name() { return _name; }
+    Iterator<Term> *createIterator();
+    Iterator<Term> *createBFSIterator();
+    Iterator<Term> *createDFSIterator();
 
     string symbol() const
     {
@@ -29,6 +35,7 @@ class Struct : public Term
         ret += (*it)->symbol() + ")";
         return ret;
     }
+
     string value() const
     {
         string ret = _name.symbol() + "(";

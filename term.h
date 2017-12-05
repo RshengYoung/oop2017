@@ -12,6 +12,9 @@ class Term
     virtual string value() const { return symbol(); }
     virtual bool match(Term &a);
 
+    // int arity();
+    // Term *args(int);
+
   protected:
     Term() : _symbol("") {}
     Term(string s) : _symbol(s) {}
