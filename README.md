@@ -1,59 +1,60 @@
 # POSD2017F Homework
 
-## Homework assignment 6
+## Homework assignment 7
 
 Please use [the files that were used in course](https://github.com/yccheng66/posd2017f) and copy test header to your repository from this project.
 
-In this assignment, you are required to implement the complete matching like `X=1.` through parser. And for test, you don't need to write the test by yourself, we will provide the test to you. Therefore on the CI server, you will only have one job. Please follow the test to implement the necessary class and its interface.
+In this time, you have to design your tests for the iterator of `Struct` and `List`. A structure contains several terms, it can be expanded into a tree structure like the picture below. We will make two kinds of way to traverse the structure, the first is [deep-first search](https://en.wikipedia.org/wiki/Depth-first_search), and the second is [breadth-first search](https://en.wikipedia.org/wiki/Breadth-first_search). When traversing the structure, iterator gets each item in structure orderly.
 
-And for the coming Saturday(11/25), there will be two teams need to attend the mob programming. Some adjustment here, please check your name and time, reply to us if you cannot attend the activity on Saturday. And for the demonstration , there is a difference from the previous time, please check [the demonstration  part](https://github.com/posd2017f/homework#demonstration) to get the more information.
+You need to design the tests to test your iterator, the function signature of iterator and its usage must follow the way that defined on the course. There is also ours tests to test your program on the CI server (.ut job). 
 
-### Update
+For mob programming, there are some changes of schedule and its activity. We add a activity called `Retrospective` in last step, which is the same as the retrospective in [Scrum](http://teddy-chen-tw.blogspot.tw/2011/12/scrum-1.html). In retrospective, team will discuss about some issue related to team's development process, and it will help you to review the way when you write code and give you some feedback so you can improve to yourself.
 
-  * Fri Nov 24 2017 10:04:53
-  
-  1. [Remove the assertion for symtable](https://github.com/posd2017f/homework/commit/044104f7f0cde0602c5034c330aad790eb6233bb#diff-d6ccfd1db8c6193d6118db3625f88da7).
-  2. [Add the description for the parser method](https://github.com/posd2017f/homework/blob/master/README.md#assignment-requirement).
+## Chagne history
 
+12/03
 
-### Mob programming team on 11/25
-|   Team#2  |   Team#3  |
+first() in our example should return bigmac not combo1.
+
+![Imgur](https://i.imgur.com/v1GyjBX.png)
+
+### Mob programming team on 12/02
+|   Team#4 (at 1622)  |   Team#5 (at 1321) |
 | --------- | --------- |
-| 103590028 | 103590006 |
-| 105598043 | 104598046 |
-| 105598062 | 105598060 |
-| 106598006 | 106598004 |
-| 106598016 | 106598011 |
-| 106598027 | 106598045 | 
-| 106598029 | 106598042 |
-| 106598041 | 106598035 |
+| 103590452 | 103590026 |
+| ~~105598072~~ | 105598046 |
+| 106598034 | 105598059 |
+| 106598040 | 106598007 |
+| 106598013 | 106598014 |
+| 106598056 | 106598043 | 
+| 106598064 | 106598052 |
+| 106598067 | 106598059 |
 
 #### Assignment requirement
 
-  1. Complete the parser through the test. 
-  
-      There are some methods different from before, especially the `createTerms` is no longer public and we use `matchings` to make term and pares sentence instead of `createTerms`. Basically it is the difference concept between parsing the complete sentence and parsing a part within the sentence. The `createTerms` should be responsible for getting the arguments if there is a list or structure, therefore it should be named `getArgs` rather then `createTerms`.
-      
-      We create a new method called `matchings` to parse the whole sentence. It take the sentence as the input, and __generates all terms in the sentence and make the corresponding tree__ to ready to do the real matching. The matching will call the `createTerm` method in serval times, and if it meets a list or structure, it will call `createTerms`(getArgs) to get the arguments for that.
+  1. Redo the creation of iterator, use aggregate(e.g. `Struct`) to create iterator instead of client, and re-write the test of that.
 
-      After `matchings`, the client will get __the root node of the tree by `expressionTree`__, and __do the real matching through the `evaluate` method of the root node__. And after `evaluate` the whole tree, client will get the final status of the matching. E.g. `X=1.`, the X will be the number 1 after the process.
+  2.  As we can handle difference type on function through *template\<T>*, make the template on `Iterator` so it can handle the type other than `Term`.
 
-  2. Implement the new class `Node` and its interface. The `Node` class is used to create the expression tree, and the tree represents the structure of a sentence. Each node is an operator or an operand, so you need to visit the whole tree to do the real matching.
-  ![tree](https://i.imgur.com/JYVvY2s.png)
-  The class has the `two constructors` to generate an node or connect two child nodes, and the `evaluate` method is used to evaluate that when to do the matching.
-  
-  3. Write the corresponding makefile to generate executable file which named `hw6`. Note that it is the executable name, not the test file name.
-  
-  4. Make sure your CI job is passed before deadline.
+  3. Design test for the iterator by yourself. The function signature and usage is not allow to change. 
+     
+     * Two kind of way for traversing: Deep-first search, Breadth-first search, so there will be two methods on the aggregate: `createBFSIterator`, `createDFSIterator`.
+
+     * You need to design 2 test data for each type, `Struct` and `List`, and use BFS and DFS to traverse each test data. So it totally has 8 tests.
+ 
+  4. Write the corresponding makefile to generate executable file which named `hw7`. Note that it is the executable name, not the test file name.
+
+  5. Make sure your CI job is passed before deadline.
 
 #### Marks
 
-  You totally have 11 tests, each one is 9 points.
-  And for easier calculating, the sum score of assignment is 100 points.
+  You totally have 12 tests, include the test written on the course. Each one is 5 points.
+  And we will have 8 tests, each one is also 5 points.
+  The sum score of assignment is 100 points.
 
 #### Deadline
 
-  Wed Nov 29 2017 23:59:59
+  Fri Dec 8 2017 23:59:59
 
 #### Note
 
@@ -109,41 +110,21 @@ And for the coming Saturday(11/25), there will be two teams need to attend the m
 
   If you are on the week, please fill out the [lunch questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSecaGZM_WujJToLXw9CfXtfg-8c-gXzbxOb9TT5TXlqZOsNxg/viewform?c=0&w=1&usp=mail_form_link), and **launch is free**.
 
-  Break ice and lunch(free): **12 : 00 ~ 13 :00**
+  Break ice and lunch(free): **12 : 00 ~ 12 : 50**
+
+  Prepared: **12 : 50 ~ 13 : 00**
 
   Mob programming: **13 : 00 ~ 16 : 00**
 
-  Location: **宏裕科技大樓 13F Lab1321**
+  Retrospective: **16 : 00 ~ 16 : 30**
+
+  Location: **宏裕科技大樓 13F Lab1321 or 16F 1622**
 
 #### Team list：
 
 Ctrl+f for finding your name.
 
-### Team #2 (11/25)
-|   Number  |
-| --------- |
-| 103590028 |
-| 105598043 |
-| 105598062 | 
-| 106598006 |
-| 106598016 |
-| 106598027 |
-| 106598029 |
-| 106598041 |
-
-### Team #3 (11/25)
-|   Number  |
-| --------- |
-| 103590006 |
-| 104598046 |
-| 105598060 | 
-| 106598004 |
-| 106598011 |
-| 106598045 |
-| 106598042 |
-| 106598035 |
-
-### Team #4 ()
+### Team #4 (12/02)
 |   Number  |
 | --------- |
 | 103590452 |
@@ -156,7 +137,7 @@ Ctrl+f for finding your name.
 | 106598067 |
 
 
-### Team #5 ()
+### Team #5 (12/02)
 |   Number  |
 | --------- |
 | 103590026 |
@@ -231,5 +212,29 @@ Ctrl+f for finding your name.
 | 106598053 |
 | 106598054 |
 | 106598060 |
+
+### Team #2 (11/25 Done)
+|   Number  |
+| --------- |
+| 103590028 |
+| 105598043 |
+| 105598062 | 
+| 106598006 |
+| 106598016 |
+| 106598027 |
+| 106598029 |
+| 106598041 |
+
+### Team #3 (11/25 Done)
+|   Number  |
+| --------- |
+| 103590006 |
+| 104598046 |
+| 105598060 | 
+| 106598004 |
+| 106598011 |
+| 106598045 |
+| 106598042 |
+| 106598035 |
 
 #### Change log
