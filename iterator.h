@@ -4,6 +4,7 @@
 #include "term.h"
 #include "struct.h"
 #include "list.h"
+
 #include <queue>
 
 using std::queue;
