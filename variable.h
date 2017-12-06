@@ -8,10 +8,15 @@
 
 using std::string;
 
+template <class T>
+class Iterator;
+
 class Variable : public Term
 {
   public:
     Variable(string s) : Term(s), _inst(0) {}
+    Iterator<Term *> *createIterator();
+
     string value() const
     {
         if (_inst)
@@ -22,13 +27,6 @@ class Variable : public Term
 
     bool match(Term &term)
     {
-        // if (typeid(term) == typeid(List))
-        // {
-        //     List *p = dynamic_cast<List *>(&term);
-        //     if (p->inList(*this))
-        //         return false;
-        // }
-
         if (this == &term)
             return true;
         if (!_inst)

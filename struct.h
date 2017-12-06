@@ -20,9 +20,9 @@ class Struct : public Term
     Term *args(int index) { return _args[index]; }
     int arity() { return _args.size(); }
 
-    Iterator<Term> *createIterator();
-    Iterator<Term> *createBFSIterator();
-    Iterator<Term> *createDFSIterator();
+    Iterator<Term *> *createIterator();
+    Iterator<Term *> *createBFSIterator();
+    Iterator<Term *> *createDFSIterator();
 
     string symbol() const
     {

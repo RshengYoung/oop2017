@@ -89,9 +89,9 @@ class List : public Term
     Term *args(int index) { return _elements[index]; }
     int arity() { return _elements.size(); }
 
-    Iterator<Term> *createIterator();
-    Iterator<Term> *createBFSIterator();
-    Iterator<Term> *createDFSIterator();
+    Iterator<Term *> *createIterator();
+    Iterator<Term *> *createBFSIterator();
+    Iterator<Term *> *createDFSIterator();
 
   private:
     vector<Term *> _elements;
