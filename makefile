@@ -1,12 +1,11 @@
 PROJECT = hw8
-# SHELL = main
 
 HEADERS = atom.h variable.h struct.h list.h scanner.h parser.h global.h iterator.h
 OBJECTS = atom.o struct.o list.o
 UNITTEST = expression.h exception.h
 MAINTEST = mainTest
 
-all: $(PROJECT) #shell
+all: $(PROJECT) shell
 
 $(PROJECT): $(MAINTEST).o $(OBJECTS)
 ifeq (${OS}, Windows_NT)
@@ -15,15 +14,15 @@ else
 	g++ -o $(PROJECT) $(MAINTEST).o $(OBJECTS) -lgtest -lpthread
 endif
 
-# shell: $(SHELL).o
-# ifeq (${OS}, Windows_NT)
-# 	g++ -o shell $(SHELL).o $(OBJECTS) -lgtest
-# else
-# 	g++ -o shell $(SHELL).o $(OBJECTS) -lgtest -lpthread
-# endif
+shell: main.o $(OBJECTS)
+ifeq (${OS}, Windows_NT)
+	g++ -o shell main.o $(OBJECTS) -lgtest
+else
+	g++ -o shell main.o $(OBJECTS) -lgtest -lpthread
+endif
 
-# $(SHELL).o: $(SHELL).cpp $(HEADERS) $(OBJECTS)
-# 	g++ -std=gnu++0x -c $(SHELL).cpp
+main.o: main.cpp $(HEADERS)
+	g++ -std=gnu++0x -c main.cpp
 
 $(MAINTEST).o: $(MAINTEST).cpp $(UNITTEST) $(HEADERS)
 	g++ -std=gnu++0x -c $(MAINTEST).cpp
@@ -47,3 +46,8 @@ test:
 	make clean
 	make
 	./$(PROJECT)
+
+build:
+	make clean
+	make shell
+	./shell

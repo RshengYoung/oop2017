@@ -99,14 +99,11 @@ class Parser
 
     void buildExpression()
     {
-        // createTerm();
         disjunctionMatch();
         restDisjunctionMatch();
         if (createTerm() != nullptr || _currentToken != '.')
             throw string("Missing token '.'");
     }
-
-    
 
     void restDisjunctionMatch()
     {
@@ -152,7 +149,7 @@ class Parser
             std::stringstream strs;
             strs << (char)_currentToken;
             string _symbol = strs.str();
-            throw string ("Unexpected '" + _symbol + "' before '.'");
+            throw string("Unexpected '" + _symbol + "' before '.'");
         }
 
         Term *left = createTerm();
@@ -166,9 +163,9 @@ class Parser
         else if (_currentToken != '=')
         {
             std::stringstream strs;
-            strs << (char)_currentToken;            
+            strs << (char)_currentToken;
             string _symbol = strs.str();
-            throw string ("Unexpected '" + _symbol + "' before '.'");
+            throw string("Unexpected '" + _symbol + "' before '.'");
         }
     }
 
@@ -183,12 +180,6 @@ class Parser
     }
 
   private:
-    FRIEND_TEST(ParserTest, createArgs);
-    FRIEND_TEST(ParserTest, ListOfTermsEmpty);
-    FRIEND_TEST(ParserTest, listofTermsTwoNumber);
-    FRIEND_TEST(ParserTest, createTerm_nestedStruct3);
-    FRIEND_TEST(ParserTest, createTerms);
-
     void createTerms()
     {
         Term *term = createTerm();
