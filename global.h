@@ -22,24 +22,38 @@ using std::vector;
 
 vector<pair<string, int>> symtable;
 
-bool isSpecialCh(char c)
-{
-    return c == '+' || c == '-' || c == '*' || c == '/' || c == '<' || c == '>' || c == '.' || c == '&' || c == '\\' || c == '~' || c == '^' || c == '$' || c == '#' || c == '@' || c == '?' || c == ':';
+bool isSpecialCh(char c) {
+  return c == '+'
+      // || c == '=' // ... the matching operator
+         || c == '-'
+         || c == '*'
+         || c == '/'
+         || c == '<'
+         || c == '>'
+         || c == '.'
+         || c == '&'
+         || c == '\\'
+         || c == '~'
+         || c == '^'
+         || c == '$'
+         || c == '#'
+         || c == '@'
+         || c == '?'
+         || c == ':';
 }
 
-bool symbolExist(string s, int &val)
-{
-    bool found = false;
-    val = -1;
-    vector<pair<string, int>>::iterator it = find_if(symtable.begin(), symtable.end(), [s](pair<string, int> ele) {
-        return ele.first == s;
-    });
+bool symbolExist(string s, int & val) {
+  bool found = false;
+  val = -1;
+  vector<pair<string, int>>::iterator it = find_if(symtable.begin(), symtable.end(), [s](pair<string, int> ele) {
+    return ele.first == s;
+  });
 
-    found = symtable.end() != it;
-    if (found)
-        val = it - symtable.begin();
+  found = symtable.end() != it;
+  if (found)
+   val = it - symtable.begin();
 
-    return found;
+  return found;
 }
 
 #endif

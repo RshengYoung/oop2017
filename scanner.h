@@ -29,7 +29,7 @@ class Scanner
             processToken<ATOM>(s);
             return ATOM;
         }
-        else if (isSpecialCh(currentChar()))
+        else if (isSpecialCh(currentChar()) && position() < buffer.length() - 1)
         {
             string s = extractAtomSC();
             processToken<ATOMSC>(s);
@@ -76,7 +76,7 @@ class Scanner
     string extractAtom()
     {
         int posBegin = position();
-        for (; isalnum(buffer[pos]); ++pos)
+        for (; isalnum(buffer[pos]) || buffer[pos] == '_'; ++pos)
             ;
         return buffer.substr(posBegin, pos - posBegin);
     }
@@ -114,9 +114,7 @@ class Scanner
     {
         int val = -1;
         if (symbolExist(s, val))
-        {
             _tokenValue = val;
-        }
         else
         {
             symtable.push_back(pair<string, int>(s, TokenType));
